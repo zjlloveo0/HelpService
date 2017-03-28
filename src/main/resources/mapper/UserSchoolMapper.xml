@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjlloveo0.dao.UserSchoolDAO">
+<resultMap type="UserSchool" id="userSchoolResultMap">
+	<id column="id" property="id"/>
+	<result column="schoolName_" property="schoolName"/>
+	<result column="collegeName_" property="collegeName"/>
+</resultMap>
+	<select id="selectUserSchoolMap" parameterType="User"
+		resultMap="userSchoolResultMap">
+		SELECT
+		user.*, 
+		college.schoolName AS schoolName_,
+		college.collegeName AS collegeName_
+		FROM
+		user,
+		college
+		WHERE
+		user.name =#{name}
+		AND user.collegeId = college.id
+	</select>
+	<select id="selectUserSchool" parameterType="User"
+		resultType="com.zjlloveo0.model.UserSchool">
+		SELECT
+		user.*, 
+		college.schoolName,
+		college.collegeName
+		FROM
+		user,
+		college
+		WHERE
+		user.name =#{name}
+		AND user.collegeId = college.id
+	</select>
+
+</mapper>

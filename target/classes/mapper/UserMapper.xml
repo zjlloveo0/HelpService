@@ -4,8 +4,15 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zjlloveo0.dao.UserDAO">
 
-	<insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="id">
-		insert into user(name,password) values (#{name} ,#{password})
+	<insert id="insertUser" parameterType="User">
+		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+			SELECT LAST_INSERT_ID()
+        </selectKey>
+		INSERT INTO user(name,phone,password,img,stuNum,point,collegeId,star,isEnable) 
+		VALUES (#{name} ,#{phone},#{password},#{img},#{stuNum},#{point},#{collegeId},#{star},#{isEnable})
 	</insert>
+	<select id="findUserById" parameterType="int" resultType="user">
+		select * from user where id=#{id}
+	</select>
 
 </mapper>

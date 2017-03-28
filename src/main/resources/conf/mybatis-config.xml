@@ -3,8 +3,9 @@
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<!-- 命名空间 -->
+	<!-- 别名 -->
 	<typeAliases>
-		<typeAlias alias="User" type="com.zjlloveo0.model.User" />
+		<!-- <typeAlias alias="User" type="com.zjlloveo0.model.User" /> -->
+		<package name="com.zjlloveo0.model"/>
 	</typeAliases>
 </configuration>

@@ -5,5 +5,5 @@ import com.zjlloveo0.model.User;
 public interface UserService {
 
 	int insertUser(User user);
-
+	User findUserById(int i);
 }
