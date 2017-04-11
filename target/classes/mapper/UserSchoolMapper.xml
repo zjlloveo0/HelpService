@@ -1,38 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zjlloveo0.dao.UserSchoolDAO">
-<resultMap type="UserSchool" id="userSchoolResultMap">
-	<id column="id" property="id"/>
-	<result column="schoolName_" property="schoolName"/>
-	<result column="collegeName_" property="collegeName"/>
-</resultMap>
-	<select id="selectUserSchoolMap" parameterType="User"
-		resultMap="userSchoolResultMap">
+	<select id="findUserSchool" parameterType="user" resultType="userSchool">
 		SELECT
-		user.*, 
-		college.schoolName AS schoolName_,
-		college.collegeName AS collegeName_
+			`user`.*, college.schoolName,
+			college.collegeName,
+			(
+				SELECT
+					count(1)
+				FROM
+					mission
+				WHERE
+					`user`.id = mission.createrId
+				AND mission.isEnable != 0
+			) AS createMissionNum,
+			(
+				SELECT
+					count(1)
+				FROM
+					`server`
+				WHERE
+					`user`.id = `server`.createrId
+				AND `server`.isEnable != 0
+			) AS createServerNum
 		FROM
-		user,
-		college
-		WHERE
-		user.name =#{name}
-		AND user.collegeId = college.id
-	</select>
-	<select id="selectUserSchool" parameterType="User"
-		resultType="com.zjlloveo0.model.UserSchool">
-		SELECT
-		user.*, 
-		college.schoolName,
-		college.collegeName
-		FROM
-		user,
-		college
-		WHERE
-		user.name =#{name}
-		AND user.collegeId = college.id
+			USER
+		LEFT JOIN college ON `user`.collegeId = college.id
+		<where>
+			<include refid="com.zjlloveo0.dao.UserDAO.User_Clause"/>
+		</where>
 	</select>
 
 </mapper>

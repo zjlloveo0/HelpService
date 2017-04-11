@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjlloveo0.dao.MissionDAO">
+	<sql id="Mission_Clause">
+		<if test="id != null and id !=''">
+			AND id=#{id}
+		</if>
+		<if test="createrId != null and createrId !=''">
+			AND createrId=#{createrId}
+		</if>
+		<if test="receiverId != null and receiverId !=''">
+			AND receiverId=#{receiverId}
+		</if>
+		<if test="createTime != null and createTime !=''">
+			AND createTime=#{createTime}
+		</if>
+		<if test="finishTime != null and finishTime !=''">
+			AND finishTime=#{finishTime}
+		</if>
+		<if test="title != null and title !=''">
+			AND title=#{title}
+		</if>
+		<if test="content != null and content !=''">
+			AND content=#{content}
+		</if>
+		<if test="img != null and img !=''">
+			AND img=#{img}
+		</if>
+		<if test="exchangePoint != null and exchangePoint !=''">
+			AND exchangePoint=#{exchangePoint}
+		</if>
+		<if test="isEnable != null and isEnable !=''">
+			AND isEnable=#{isEnable}
+		</if>
+		<if test="updateTime != null and updateTime !=''">
+			AND updateTime=#{updateTime}
+		</if>
+	</sql>
+	<insert id="insertMission" parameterType="mission">
+		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO
+		mission(createrId,receiverId,createTime,finishTime,title,content,img,exchangePoint,isEnable)
+		VALUES
+		(#{createrId},#{receiverId},#{createTime},#{finishTime},#{title},#{content},#{img},#{exchangePoint},#{isEnable})
+	</insert>
+	<select id="findMission" parameterType="mission" resultType="mission">
+		select * from mission
+		<where>
+			<include refid="Mission_Clause" />
+		</where>
+		order by Id
+	</select>
+
+</mapper>

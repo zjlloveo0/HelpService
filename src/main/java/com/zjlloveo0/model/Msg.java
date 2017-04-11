@@ -26,6 +26,9 @@ public class Msg {
 		if(content.startsWith("{\"")){
 			s="{\"code\":" + code + ",\"content\":" + content + "}";
 			System.out.println("**结果**\n"+s+"\n**结果**");
+		}else if(content.startsWith("[{\"")){
+			s="{\"code\":" + code + ",\"content\":" + content + "}";
+			System.out.println("**结果**\n"+s+"\n**结果**");
 		}else{
 			s="{\"code\":" + code + ",\"content\":\"" + content + "\"}";
 			System.out.println("**信息**\n"+s+"\n**信息**");

@@ -4,10 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 用户表
+ * 用户
+ * @author zjlloveo0
+ *
  */
 public class User implements Serializable{
 
+	private static final long serialVersionUID = -5334056280392634156L;
 	private Integer id;
 	private String name;
 	private String phone;
@@ -90,11 +93,11 @@ public class User implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "{\"id\":\"" + id + "\",\"name\":\"" + name + "\",\"phone\":\""
+		return "{\"id\":" + id + ",\"name\":\"" + name + "\",\"phone\":\""
 				+ phone + "\",\"password\":\"" + password + "\",\"img\":\""
-				+ img + "\",\"stuNum\":\"" + stuNum + "\",\"point\":\"" + point
-				+ "\",\"collegeId\":\"" + collegeId + "\",\"star\":\"" + star
-				+ "\",\"isEnable\":\"" + isEnable + "\",\"updateTime\":\""
+				+ img + "\",\"stuNum\":\"" + stuNum + "\",\"point\":" + point
+				+ ",\"collegeId\":" + collegeId + ",\"star\":" + star
+				+ ",\"isEnable\":" + isEnable + ",\"updateTime\":\""
 				+ updateTime + "\"}";
 	}
 	
