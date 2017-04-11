@@ -1,23 +1,29 @@
 package com.zjlloveo0.model;
 
+import java.io.Serializable;
 import java.util.Date;
-
-public class Service {
-	private Integer Id;
+/**
+ * 服务
+ * @author zjlloveo0
+ *
+ */
+public class Server implements Serializable{
+	private static final long serialVersionUID = -534655350232993010L;
+	private Integer id;
 	private Integer createrId;
 	private Date createTime;
 	private String title;
 	private String content;
 	private String img;
 	private Integer exchangePoint;
-	private Integer status;
 	private Integer isEnable;
 	private Date updateTime;
+	
 	public Integer getId() {
-		return Id;
+		return id;
 	}
 	public void setId(Integer id) {
-		Id = id;
+		this.id = id;
 	}
 	public Integer getCreaterId() {
 		return createrId;
@@ -55,12 +61,6 @@ public class Service {
 	public void setExchangePoint(Integer exchangePoint) {
 		this.exchangePoint = exchangePoint;
 	}
-	public Integer getStatus() {
-		return status;
-	}
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
 	public Integer getIsEnable() {
 		return isEnable;
 	}
@@ -75,12 +75,11 @@ public class Service {
 	}
 	@Override
 	public String toString() {
-		return "{\"Id\":\"" + Id + "\",\"createrId\":\"" + createrId
-				+ "\",\"createTime\":\"" + createTime + "\",\"title\":\""
+		return "{\"id\":" + id + ",\"createrId\":" + createrId
+				+ ",\"createTime\":\"" + createTime + "\",\"title\":\""
 				+ title + "\",\"content\":\"" + content + "\",\"img\":\"" + img
-				+ "\",\"exchangePoint\":\"" + exchangePoint
-				+ "\",\"status\":\"" + status + "\",\"isEnable\":\"" + isEnable
-				+ "\",\"updateTime\":\"" + updateTime + "\"}";
+				+ "\",\"exchangePoint\":" + exchangePoint
+				+ ",\"isEnable\":" + isEnable + ",\"updateTime\":\""
+				+ updateTime + "\"}";
 	}
-
 }

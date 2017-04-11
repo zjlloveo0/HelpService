@@ -41,8 +41,8 @@ public class College {
 	}
 	@Override
 	public String toString() {
-		return "{\"id\":\"" + id + "\",\"schoolName\":\"" + schoolName
-				+ "\",\"collegeName\":\"" + collegeName + "\",\"isEnable\":\""
-				+ isEnable + "\",\"updateTime\":\"" + updateTime + "\"}";
+		return "{\"id\":" + id + ",\"schoolName\":\"" + schoolName
+				+ "\",\"collegeName\":\"" + collegeName + "\",\"isEnable\":"
+				+ isEnable + ",\"updateTime\":\"" + updateTime + "\"}";
 	}
 }

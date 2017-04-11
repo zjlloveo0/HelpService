@@ -7,13 +7,16 @@
 <title>登陆页面</title>
 </head>
 <body>
-	<form action="index.do" method="post">
-		<input type="text" name="name"><br> <input type="text"
-			name="phone"><br> <input type="password" name="password"><br>
-		<input type="text" name="stuNum"><br> <input type="text"
-			name="Point"><br> <input type="text" name="collegeId"><br>
-		<input type="text" name="star"><br> <input type="text"
-			name="isEnable11"><br> <input type="submit" value="确认">
+	<form action="reg" method="post">
+		name<input type="text" name="name"><br> 
+		phone<input type="text" name="phone"><br> 
+		password<input type="password" name="password"><br>
+		stuNum<input type="text" name="stuNum"><br> 
+		Point<input type="text" name="point"><br> 
+		collegeId<input type="text" name="collegeId"><br>
+		star<input type="text" name="star"><br> 
+		isEnable<input type="text" name="isEnable"><br> 
+		<input type="submit" value="确认">
 	</form>
 </body>
 </html>

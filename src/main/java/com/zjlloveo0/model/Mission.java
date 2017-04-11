@@ -12,7 +12,6 @@ public class Mission {
 	private String content;
 	private String img;
 	private Integer exchangePoint;
-	private Integer status;
 	private Integer isEnable;
 	private Date updateTime;
 	public Integer getId() {
@@ -69,12 +68,6 @@ public class Mission {
 	public void setExchangePoint(Integer exchangePoint) {
 		this.exchangePoint = exchangePoint;
 	}
-	public Integer getStatus() {
-		return status;
-	}
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
 	public Integer getIsEnable() {
 		return isEnable;
 	}
@@ -89,13 +82,12 @@ public class Mission {
 	}
 	@Override
 	public String toString() {
-		return "{\"id\":\"" + id + "\",\"createrId\":\"" + createrId
-				+ "\",\"receiverId\":\"" + receiverId + "\",\"createTime\":\""
+		return "{\"id\":" + id + ",\"createrId\":" + createrId
+				+ ",\"receiverId\":" + receiverId + ",\"createTime\":\""
 				+ createTime + "\",\"finishTime\":\"" + finishTime
 				+ "\",\"title\":\"" + title + "\",\"content\":\"" + content
-				+ "\",\"img\":\"" + img + "\",\"exchangePoint\":\""
-				+ exchangePoint + "\",\"status\":\"" + status
-				+ "\",\"isEnable\":\"" + isEnable + "\",\"updateTime\":\""
+				+ "\",\"img\":\"" + img + "\",\"exchangePoint\":"
+				+ exchangePoint + ",\"isEnable\":" + isEnable + ",\"updateTime\":\""
 				+ updateTime + "\"}";
 	}
 }

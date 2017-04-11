@@ -30,6 +30,7 @@ public class HttpTools {
 			conn.addRequestProperty("CheckSum", checkSum);
 			conn.setRequestProperty("Content-Type",SYSVALUE.CONTENTTYPE);
 			System.out.println("请求头\n"+"AppKey="+SYSVALUE.APPKEY+"&Nonce="+randNum+"&CurTime="+curTime+"&CheckSum="+checkSum+"&Content-Type="+SYSVALUE.CONTENTTYPE);
+			System.out.println("请求参数\n"+params);
 			// 发送POST请求必须设置如下两行
 			conn.setDoOutput(true);
 			conn.setDoInput(true);
@@ -46,13 +47,12 @@ public class HttpTools {
 			while ((line = in.readLine()) != null) {
 				result += line;
 			}
-			System.out.println("请求参数\n"+params+"\n----结束POST请求----");
+			System.out.println("请求结果\n"+result);
+			result=new Msg(200,result).toString();
 		} catch (Exception e) {
-			result=SYSVALUE.MESSAGE.get("E_POST").toString();
+			result=new Msg(100,SYSVALUE.MESSAGE.get("E_POST_EXCEPTION")).toString();
 			e.printStackTrace();
-		}
-		// 使用finally块来关闭输出流、输入流
-		finally {
+		}finally {
 			try {
 				if (out != null) {
 					out.close();
@@ -61,10 +61,11 @@ public class HttpTools {
 					in.close();
 				}
 			} catch (IOException ex) {
-				result=SYSVALUE.MESSAGE.get("E_SYSTEM").toString();
+				result=new Msg(101,SYSVALUE.MESSAGE.get("E_POST_SYSTEM")).toString();
 				ex.printStackTrace();
 			}
 		}
+		System.out.println("----结束POST请求----");
 		return result;
 	}
 }
