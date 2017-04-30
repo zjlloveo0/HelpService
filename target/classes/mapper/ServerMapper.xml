@@ -5,7 +5,6 @@
 <mapper namespace="com.zjlloveo0.dao.ServerDAO">
 	<sql id="Server_Clause">
 		<if test="id != null and id !=''">
-<<<<<<< HEAD
 			AND `server`.id=#{id}
 		</if>
 		<if test="createrId != null and createrId !=''">
@@ -49,51 +48,6 @@
 			<include refid="Server_Clause" />
 		</where>
 		order by `server`.createTime desc
-=======
-			AND id=#{id}
-		</if>
-		<if test="createrId != null and createrId !=''">
-			AND createrId=#{createrId}
-		</if>
-		<if test="createTime != null and createTime !=''">
-			AND createTime=#{createTime}
-		</if>
-		<if test="title != null and title !=''">
-			AND title=#{title}
-		</if>
-		<if test="content != null and content !=''">
-			AND content=#{content}
-		</if>
-		<if test="img != null and img !=''">
-			AND img=#{img}
-		</if>
-		<if test="exchangePoint != null and exchangePoint !=''">
-			AND exchangePoint=#{exchangePoint}
-		</if>
-		<if test="isEnable != null and isEnable !=''">
-			AND isEnable=#{isEnable}
-		</if>
-		<if test="updateTime != null and updateTime !=''">
-			AND updateTime=#{updateTime}
-		</if>
-	</sql>
-	<insert id="insertServer" parameterType="server">
-		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
-			SELECT
-			LAST_INSERT_ID()
-		</selectKey>
-		INSERT INTO
-		server(createrId,createTime,title,content,img,exchangePoint,isEnable)
-		VALUES
-		(#{createrId},#{createTime},#{title},#{content},#{img},#{exchangePoint},#{isEnable})
-	</insert>
-	<select id="findServer" parameterType="server" resultType="server">
-		select * from server
-		<where>
-			<include refid="Server_Clause" />
-		</where>
-		order by Id
->>>>>>> branch 'master' of https://github.com/zjlloveo0/HelpService.git
 	</select>
 
 </mapper>

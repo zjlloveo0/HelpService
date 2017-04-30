@@ -9,13 +9,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
 
-<<<<<<< HEAD
 import com.zjlloveo0.model.MissionUser;
 import com.zjlloveo0.model.Server;
 import com.zjlloveo0.model.ServerUser;
-=======
 import com.zjlloveo0.model.Server;
->>>>>>> branch 'master' of https://github.com/zjlloveo0/HelpService.git
 import com.zjlloveo0.model.UserSchool;
 
 public class JunitTest {
@@ -42,10 +39,8 @@ public class JunitTest {
 	}
 	@Test
 	public void testJson() throws UnknownHostException, JSONException {
-<<<<<<< HEAD
 		MissionUser s=new MissionUser();
 		s.toString();
-=======
 //		String s="[{\"id\":\"1\",\"createrId\":\"1\",\"createTime\":\"Sun Jan 01 00:00:00 CST 2017\",\"title\":\"装系统\",\"content\":\"电脑系统\",\"img\":\"img/null.jpg\",\"exchangePoint\":\"10\",\"isEnable\":\"1\",\"updateTime\":\"Thu Mar 30 10:03:18 CST 2017\"}, {\"id\":\"2\",\"createrId\":\"2\",\"createTime\":\"Thu Mar 30 23:06:54 CST 2017\",\"title\":\"清灰\",\"content\":\"电脑清灰\",\"img\":\"null\",\"exchangePoint\":\"20\",\"isEnable\":\"1\",\"updateTime\":\"Thu Mar 30 23:07:31 CST 2017\"}]";
 //		try {
 //			JSONArray c=new JSONArray(s);
@@ -77,7 +72,6 @@ public class JunitTest {
         currentUser.setCreateServerNum(createServerNum.equals("null")?null:Integer.valueOf(createServerNum));
         int i=1;
         i+=1;
->>>>>>> branch 'master' of https://github.com/zjlloveo0/HelpService.git
 	}
 }
 
