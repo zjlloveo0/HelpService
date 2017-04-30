@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjlloveo0.dao.ServerUserDAO">
+	<select id="findServerUser" parameterType="server" resultType="serverUser">
+		SELECT
+			`server`.*, `user`.img AS createrImg,
+			`user`.`name` AS createrName,`user`.point AS createrPoint
+		FROM
+			`server`
+		LEFT JOIN `user` ON `user`.id=`server`.createrId
+		<where>
+			<include refid="com.zjlloveo0.dao.ServerDAO.Server_Clause" />
+		</where>
+		order by `server`.createTime desc
+	</select>
+</mapper>
