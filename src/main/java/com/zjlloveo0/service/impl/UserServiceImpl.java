@@ -58,9 +58,6 @@ public class UserServiceImpl implements UserService{
     					}
     					throw new RuntimeException();
     				}
-//    				else if(nimCode==200&&content.getJSONObject("info").getString("accid")==user.getPhone()){
-//    					postResult=new Msg(200,SYSVALUE.MESSAGE.get("E_USER_EXIST")).toString();
-//    				}
     			}else{
     				throw new RuntimeException();
     			}

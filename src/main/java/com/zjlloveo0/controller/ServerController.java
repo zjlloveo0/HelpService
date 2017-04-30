@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zjlloveo0.model.Msg;
 import com.zjlloveo0.model.Server;
+import com.zjlloveo0.model.ServerUser;
 import com.zjlloveo0.service.ServerService;
+import com.zjlloveo0.service.ServerUserService;
 import com.zjlloveo0.util.SYSVALUE;
 
 @Controller
@@ -18,6 +20,8 @@ public class ServerController {
 
 	@Autowired
 	private ServerService serverService;
+	@Autowired
+	private ServerUserService serverUserService;
 
 	@ResponseBody
 	@RequestMapping(value = "createServer", produces = "text/plain;charset=utf-8")
@@ -38,5 +42,11 @@ public class ServerController {
 	public String findServer(Server server) {
 		List<Server> serverList=serverService.findServer(server);
 		return new Msg(serverList.size(),serverList.toString()).toString();
+	}
+	@ResponseBody
+	@RequestMapping(value = "findServerUser", produces = "text/plain;charset=utf-8")
+	public String findServerUser(Server server) {
+		List<ServerUser> serverUserList=serverUserService.findServerUser(server);
+		return new Msg(serverUserList.size(),serverUserList.toString()).toString();
 	}
 }

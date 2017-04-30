@@ -5,37 +5,37 @@
 <mapper namespace="com.zjlloveo0.dao.MissionDAO">
 	<sql id="Mission_Clause">
 		<if test="id != null and id !=''">
-			AND id=#{id}
+			AND mission.id=#{id}
 		</if>
 		<if test="createrId != null and createrId !=''">
-			AND createrId=#{createrId}
+			AND mission.createrId=#{createrId}
 		</if>
 		<if test="receiverId != null and receiverId !=''">
-			AND receiverId=#{receiverId}
+			AND mission.receiverId=#{receiverId}
 		</if>
 		<if test="createTime != null and createTime !=''">
-			AND createTime=#{createTime}
+			AND mission.createTime=#{createTime}
 		</if>
 		<if test="finishTime != null and finishTime !=''">
-			AND finishTime=#{finishTime}
+			AND mission.finishTime=#{finishTime}
 		</if>
 		<if test="title != null and title !=''">
-			AND title=#{title}
+			AND mission.title=#{title}
 		</if>
 		<if test="content != null and content !=''">
-			AND content=#{content}
+			AND mission.content=#{content}
 		</if>
 		<if test="img != null and img !=''">
-			AND img=#{img}
+			AND mission.img=#{img}
 		</if>
 		<if test="exchangePoint != null and exchangePoint !=''">
-			AND exchangePoint=#{exchangePoint}
+			AND mission.exchangePoint=#{exchangePoint}
 		</if>
 		<if test="isEnable != null and isEnable !=''">
-			AND isEnable=#{isEnable}
+			AND mission.isEnable=#{isEnable}
 		</if>
 		<if test="updateTime != null and updateTime !=''">
-			AND updateTime=#{updateTime}
+			AND mission.updateTime=#{updateTime}
 		</if>
 	</sql>
 	<insert id="insertMission" parameterType="mission">
@@ -53,7 +53,7 @@
 		<where>
 			<include refid="Mission_Clause" />
 		</where>
-		order by Id
+		order by mission.createTime desc
 	</select>
 
 </mapper>

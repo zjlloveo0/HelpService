@@ -8,9 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.zjlloveo0.model.MissionUser;
 import com.zjlloveo0.model.Msg;
 import com.zjlloveo0.model.Mission;
 import com.zjlloveo0.service.MissionService;
+import com.zjlloveo0.service.MissionUserService;
 import com.zjlloveo0.util.SYSVALUE;
 
 @Controller
@@ -18,6 +20,8 @@ public class MissionController {
 
 	@Autowired
 	private MissionService missionService;
+	@Autowired
+	private MissionUserService missionUserService;
 
 	@ResponseBody
 	@RequestMapping(value = "createMission", produces = "text/plain;charset=utf-8")
@@ -38,5 +42,11 @@ public class MissionController {
 	public String findMission(Mission mission) {
 		List<Mission> missionList=missionService.findMission(mission);
 		return new Msg(missionList.size(),missionList.toString()).toString();
+	}
+	@ResponseBody
+	@RequestMapping(value = "findMissionUser", produces = "text/plain;charset=utf-8")
+	public String findMissionUser(Mission mission) {
+		List<MissionUser> missionUserList=missionUserService.findMissionUser(mission);
+		return new Msg(missionUserList.size(),missionUserList.toString()).toString();
 	}
 }

@@ -5,31 +5,31 @@
 <mapper namespace="com.zjlloveo0.dao.ServerDAO">
 	<sql id="Server_Clause">
 		<if test="id != null and id !=''">
-			AND id=#{id}
+			AND `server`.id=#{id}
 		</if>
 		<if test="createrId != null and createrId !=''">
-			AND createrId=#{createrId}
+			AND `server`.createrId=#{createrId}
 		</if>
 		<if test="createTime != null and createTime !=''">
-			AND createTime=#{createTime}
+			AND `server`.createTime=#{createTime}
 		</if>
 		<if test="title != null and title !=''">
-			AND title=#{title}
+			AND `server`.title=#{title}
 		</if>
 		<if test="content != null and content !=''">
-			AND content=#{content}
+			AND `server`.content=#{content}
 		</if>
 		<if test="img != null and img !=''">
-			AND img=#{img}
+			AND `server`.img=#{img}
 		</if>
 		<if test="exchangePoint != null and exchangePoint !=''">
-			AND exchangePoint=#{exchangePoint}
+			AND `server`.exchangePoint=#{exchangePoint}
 		</if>
 		<if test="isEnable != null and isEnable !=''">
-			AND isEnable=#{isEnable}
+			AND `server`.isEnable=#{isEnable}
 		</if>
 		<if test="updateTime != null and updateTime !=''">
-			AND updateTime=#{updateTime}
+			AND `server`.updateTime=#{updateTime}
 		</if>
 	</sql>
 	<insert id="insertServer" parameterType="server">
@@ -43,11 +43,11 @@
 		(#{createrId},#{createTime},#{title},#{content},#{img},#{exchangePoint},#{isEnable})
 	</insert>
 	<select id="findServer" parameterType="server" resultType="server">
-		select * from server
+		select * from `server`
 		<where>
 			<include refid="Server_Clause" />
 		</where>
-		order by Id
+		order by `server`.createTime desc
 	</select>
 
 </mapper>
