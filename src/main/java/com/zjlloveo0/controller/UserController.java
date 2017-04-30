@@ -74,6 +74,7 @@ public class UserController {
     public String findUser(User user){
     	List<User> userList=userService.findUser(user);
    		return new Msg(userList.size(),userList.toString()).toString();
+<<<<<<< HEAD
     }
     
     @ResponseBody
@@ -96,5 +97,7 @@ public class UserController {
     	}else{
     		return new Msg(107,SYSVALUE.MESSAGE.get("E_LOGIN_EXCEPTION")).toString();
     	}
+=======
+>>>>>>> branch 'master' of https://github.com/zjlloveo0/HelpService.git
     }
 }

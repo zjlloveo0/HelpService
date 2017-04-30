@@ -58,6 +58,12 @@ public class UserServiceImpl implements UserService{
     					}
     					throw new RuntimeException();
     				}
+<<<<<<< HEAD
+=======
+//    				else if(nimCode==200&&content.getJSONObject("info").getString("accid")==user.getPhone()){
+//    					postResult=new Msg(200,SYSVALUE.MESSAGE.get("E_USER_EXIST")).toString();
+//    				}
+>>>>>>> branch 'master' of https://github.com/zjlloveo0/HelpService.git
     			}else{
     				throw new RuntimeException();
     			}
