@@ -4,7 +4,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zjlloveo0.dao.UserDAO">
 	<sql id="User_Clause">
-		<if test="id != null and id !=''">
+		<if test="id != null">
 			AND `user`.id=#{id}
 		</if>
 		<if test="name != null and name !=''">
@@ -22,16 +22,16 @@
 		<if test="stuNum != null and stuNum !=''">
 			AND `user`.stuNum=#{stuNum}
 		</if>
-		<if test="point != null and point !=''">
+		<if test="point != null">
 			AND `user`.point=#{point}
 		</if>
-		<if test="collegeId != null and collegeId !=''">
+		<if test="collegeId != null">
 			AND `user`.collegeId=#{collegeId}
 		</if>
-		<if test="star != null and star !=''">
+		<if test="star != null">
 			AND `user`.star=#{star}
 		</if>
-		<if test="isEnable != null and isEnable !=''">
+		<if test="isEnable != null">
 			AND `user`.isEnable=#{isEnable}
 		</if>
 		<if test="updateTime != null and updateTime !=''">
@@ -51,5 +51,37 @@
 			<include refid="User_Clause"/>
 		</where>
 	</select>
-
+	<update id="updateUser" parameterType="user">
+		UPDATE `user` 
+		<set>
+	      <if test="name != null">
+	        `user`.name = #{name,jdbcType=VARCHAR},
+	      </if>
+	      <if test="phone != null">
+	        `user`.phone = #{phone,jdbcType=VARCHAR},
+	      </if>
+	      <if test="password != null">
+	        `user`.password = #{password,jdbcType=VARCHAR},
+	      </if>
+	      <if test="img != null">
+	        `user`.img = #{img,jdbcType=VARCHAR},
+	      </if>
+	      <if test="stuNum != null">
+	        `user`.stuNum = #{stuNum,jdbcType=VARCHAR},
+	      </if>
+	      <if test="point != null">
+	        `user`.point = #{point,jdbcType=INTEGER},
+	      </if>
+	      <if test="collegeId != null">
+	        `user`.collegeId = #{collegeId,jdbcType=INTEGER},
+	      </if>
+	      <if test="star != null">
+	        `user`.star = #{star,jdbcType=INTEGER},
+	      </if>
+	      <if test="isEnable != null">
+	        `user`.isEnable = #{isEnable,jdbcType=INTEGER},
+	      </if>
+	    </set>
+	    WHERE `user`.id = #{id}
+	</update>
 </mapper>

@@ -1,7 +1,8 @@
 package com.zjlloveo0.model;
 
+import com.zjlloveo0.util.JsonTools;
+
 public class ServerUser extends Server {
-	private static final long serialVersionUID = -6679540039631131864L;
 	private String createrName;
 	private String createrImg;
 	private Integer createrPoint;
@@ -35,11 +36,11 @@ public class ServerUser extends Server {
 		return "{\"createrName\":\"" + createrName + "\",\"createrImg\":\"" + createrImg
 				+ "\",\"createrPoint\":"+createrPoint+",\"id\":" + getId() + ",\"createrId\":"
 				+ getCreaterId() + ",\"createTime\":\""
-				+ getCreateTime() + "\",\"title\":\"" + getTitle()
+				+ JsonTools.formatDate(getCreateTime()) + "\",\"title\":\"" + getTitle()
 				+ "\",\"content\":\"" + getContent()
 				+ "\",\"exchangePoint\":" + getExchangePoint()
 				+ ",\"isEnable\":" + getIsEnable()
-				+ ",\"updateTime\":\"" + getUpdateTime() + "\",\"img\":\""+getImg()+"\"}";
+				+ ",\"updateTime\":\"" + JsonTools.formatDate(getUpdateTime()) + "\",\"img\":\""+getImg()+"\"}";
 	}
 	
 }

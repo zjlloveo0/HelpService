@@ -2,6 +2,8 @@ package com.zjlloveo0.model;
 
 import java.util.Date;
 
+import com.zjlloveo0.util.JsonTools;
+
 public class College {
 	private Integer id;
 	private String schoolName;
@@ -43,6 +45,6 @@ public class College {
 	public String toString() {
 		return "{\"id\":" + id + ",\"schoolName\":\"" + schoolName
 				+ "\",\"collegeName\":\"" + collegeName + "\",\"isEnable\":"
-				+ isEnable + ",\"updateTime\":\"" + updateTime + "\"}";
+				+ isEnable + ",\"updateTime\":\"" + JsonTools.formatDate(updateTime) + "\"}";
 	}
 }

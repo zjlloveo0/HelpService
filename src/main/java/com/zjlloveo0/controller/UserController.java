@@ -13,6 +13,7 @@ import com.zjlloveo0.model.User;
 import com.zjlloveo0.model.UserSchool;
 import com.zjlloveo0.service.UserSchoolService;
 import com.zjlloveo0.service.UserService;
+import com.zjlloveo0.util.MiPush;
 import com.zjlloveo0.util.SYSVALUE;
  
 @Controller
@@ -74,5 +75,13 @@ public class UserController {
     public String findUser(User user){
     	List<User> userList=userService.findUser(user);
    		return new Msg(userList.size(),userList.toString()).toString();
+    }
+    @ResponseBody
+    @RequestMapping(value="updateUser",produces = "text/plain;charset=utf-8")
+    public String updateUser(User user){
+    	if(user==null||user.getId()==null||user.getId()==0){
+    		return new Msg(112, SYSVALUE.MESSAGE.get("E_USER_LESS_FIELD")).toString();
+    	}
+    	return userService.updateUser(user);
     }
 }

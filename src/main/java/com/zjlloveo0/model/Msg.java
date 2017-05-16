@@ -3,7 +3,8 @@ package com.zjlloveo0.model;
 public class Msg {
 	private Integer code;
 	private String content;
-	
+	public Msg() {
+	}
 	public Msg(Integer code, String content) {
 		this.code = code;
 		this.content = content;

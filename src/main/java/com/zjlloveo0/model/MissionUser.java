@@ -1,11 +1,31 @@
 package com.zjlloveo0.model;
 
+import com.zjlloveo0.util.JsonTools;
+
 public class MissionUser extends Mission {
 	
 	private String createrName;
 	private String createrImg;
 	private String receiverName;
 	private String receiverImg;
+	private Integer createrPoint;
+	private Integer receiverPoint;
+	
+	public Integer getCreaterPoint() {
+		return createrPoint;
+	}
+
+	public void setCreaterPoint(Integer createrPoint) {
+		this.createrPoint = createrPoint;
+	}
+
+	public Integer getReceiverPoint() {
+		return receiverPoint;
+	}
+
+	public void setReceiverPoint(Integer receiverPoint) {
+		this.receiverPoint = receiverPoint;
+	}
 	
 	public String getCreaterName() {
 		return createrName;
@@ -43,15 +63,17 @@ public class MissionUser extends Mission {
 	public String toString() {
 		return "{\"createrName\":\"" + createrName + "\",\"createrImg\":\"" + createrImg
 				+ "\",\"receiverName\":\""+receiverName+"\",\"receiverImg\":\"" + receiverImg
-				+ "\",\"id\":" + getId() + ",\"createrId\":"
+				+ "\",\"id\":" + getId()+",\"state\":"+getState() + ",\"createrId\":"
 				+ getCreaterId() + ",\"receiverId\":"
 				+ getReceiverId() + ",\"createTime\":\""
-				+ getCreateTime() + "\",\"finishTime\":\""
-				+ getFinishTime() + "\",\"title\":\"" + getTitle()
+				+ JsonTools.formatDate(getCreateTime()) + "\",\"finishTime\":\""
+				+ JsonTools.formatDate(getFinishTime()) + "\",\"title\":\"" + getTitle()
 				+ "\",\"content\":\"" + getContent()
 				+ "\",\"exchangePoint\":" + getExchangePoint()
+				+ ",\"createrPoint\":" + getCreaterPoint()
+				+ ",\"receiverPoint\":" + getReceiverPoint()
 				+ ",\"isEnable\":" + getIsEnable()
-				+ ",\"updateTime\":\"" + getUpdateTime() + "\",\"img\":\""+getImg()+"\"}";
+				+ ",\"updateTime\":\"" + JsonTools.formatDate(getUpdateTime()) + "\",\"img\":\""+getImg()+"\"}";
 	}
 
 }

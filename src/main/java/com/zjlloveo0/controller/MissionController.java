@@ -30,7 +30,7 @@ public class MissionController {
 				|| mission.getTitle() == null || "".equals(mission.getTitle())
 				|| mission.getContent() == null|| "".equals(mission.getContent())
 				|| mission.getExchangePoint() == null|| mission.getExchangePoint() < 0) {
-			return new Msg(1, SYSVALUE.MESSAGE.get("E_MISSION_LESS_FIELD"))
+			return new Msg(111, SYSVALUE.MESSAGE.get("E_MISSION_LESS_FIELD"))
 					.toString();
 		}
 		mission.setCreateTime(new Date());
@@ -42,6 +42,16 @@ public class MissionController {
 	public String findMission(Mission mission) {
 		List<Mission> missionList=missionService.findMission(mission);
 		return new Msg(missionList.size(),missionList.toString()).toString();
+	}
+	@ResponseBody
+	@RequestMapping(value = "updateMission", produces = "text/plain;charset=utf-8")
+	public String updateMission(Mission mission) {
+		System.out.println(mission.toString());
+		if (mission==null||mission.getId() == null || mission.getId() == 0){
+			return new Msg(111, SYSVALUE.MESSAGE.get("E_MISSION_LESS_FIELD"))
+			.toString();
+		}
+		return missionService.updateMission(mission);
 	}
 	@ResponseBody
 	@RequestMapping(value = "findMissionUser", produces = "text/plain;charset=utf-8")

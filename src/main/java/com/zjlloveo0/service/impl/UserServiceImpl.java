@@ -80,4 +80,9 @@ public class UserServiceImpl implements UserService{
 		List<User> userList=userDAO.findUser(user);
 		return userList;
 	}
+	@Override
+	public String updateUser(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

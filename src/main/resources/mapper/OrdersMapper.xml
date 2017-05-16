@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjlloveo0.dao.OrdersDAO">
+	<sql id="Orders_Clause">
+		<if test="id != null">
+			AND orders.id=#{id}
+		</if>
+		<if test="serverId != null">
+			AND orders.serverId=#{serverId}
+		</if>
+		<if test="createId != null">
+			AND orders.createId=#{createId}
+		</if>
+		<if test="uId != null">
+			AND orders.uId=#{uId}
+		</if>
+		<if test="state != null">
+			AND orders.state=#{state}
+		</if>
+		<if test="message != null">
+			AND orders.message=#{message}
+		</if>
+		<if test="reMsg != null">
+			AND orders.reMsg=#{reMsg}
+		</if>
+		<if test="exchangePoint != null">
+			AND orders.exchangePoint=#{exchangePoint}
+		</if>
+		<if test="isEnable != null">
+			AND orders.isEnable=#{isEnable}
+		</if>
+		<if test="updateTime != null and updateTime !=''">
+			AND orders.updateTime=#{updateTime}
+		</if>
+	</sql>
+	<resultMap type="orders" id="ordersRS">
+		<id column="id" property="id"/>
+		<result column="serverId" property="serverId"/>
+		<result column="createId" property="createId"/>
+		<result column="uId" property="uId"/>
+		<result column="message" property="message"/>
+		<result column="reMsg" property="reMsg"/>
+		<result column="state" property="state"/>
+		<result column="exchangePoint" property="exchangePoint"/>
+		<result column="isEnable" property="isEnable"/>
+		<result column="updateTime" property="updateTime"/>
+	</resultMap>
+	<resultMap type="ordersDetail" id="ordersDetailRS" extends="ordersRS">
+		<result column="img" property="img"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<association property="createUser" javaType="userSchool">
+			<id column="createId" property="id"/>
+			<result column="createName" property="name"/>
+			<result column="createPhone" property="phone"/>
+			<result column="createPassword" property="password"/>
+			<result column="createImg" property="img"/>
+			<result column="createStuNum" property="stuNum"/>
+			<result column="createPoint" property="point"/>
+			<result column="createCollegeId" property="collegeId"/>
+			<result column="createStar" property="star"/>
+			<result column="createIsEnable" property="isEnable"/>
+			<result column="createUpdateTime" property="updateTime"/>
+			<result column="createSchoolName" property="schoolName"/>
+			<result column="createCollegeName" property="collegeName"/>
+		</association>
+		<association property="ofUser" javaType="userSchool">
+			<id column="uId" property="id"/>
+			<result column="ofName" property="name"/>
+			<result column="ofPhone" property="phone"/>
+			<result column="ofPassword" property="password"/>
+			<result column="ofImg" property="img"/>
+			<result column="ofStuNum" property="stuNum"/>
+			<result column="ofPoint" property="point"/>
+			<result column="ofCollegeId" property="collegeId"/>
+			<result column="ofStar" property="star"/>
+			<result column="ofIsEnable" property="isEnable"/>
+			<result column="ofUpdateTime" property="updateTime"/>
+			<result column="ofSchoolName" property="schoolName"/>
+			<result column="ofCollegeName" property="collegeName"/>
+		</association>
+	</resultMap>
+	<insert id="insertOrders" parameterType="orders">
+		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+			SELECT LAST_INSERT_ID()
+        </selectKey>
+		INSERT INTO orders(serverId,createId,uId,message,reMsg,state,exchangePoint,isEnable) 
+		VALUES (#{serverId},#{createId} ,#{uId},#{message},#{reMsg},#{state},#{exchangePoint},#{isEnable})
+	</insert>
+	<select id="findOrdersList" parameterType="orders" resultType="ordersList">
+		SELECT
+			orders.*, `server`.title,
+			`server`.img
+		FROM
+			orders
+		LEFT JOIN `server` ON orders.serverId = `server`.id
+		<where>
+			<include refid="Orders_Clause"/>
+		</where>
+		ORDER BY
+			orders.updateTime DESC
+	</select>
+	<select id="findOrdersDetailList" parameterType="orders" resultMap="ordersDetailRS">
+		SELECT
+			orders.*, `server`.title,
+			`server`.img,
+			`server`.content,
+			`user`.`name` AS createName,
+			`user`.img AS createImg,
+			`user`.point AS createPoint,
+			`user`.phone AS createPhone,
+			`user`.stuNum AS createStuNum,
+			`user`.collegeId AS createCollegeId,
+			`user`.isEnable AS createIsEnable,
+			u.`name` AS ofName,
+			u.img AS ofImg,
+			u.point AS ofPoint,
+			u.phone AS ofPhone,
+			u.stuNum AS ofStuNum,
+			u.collegeId AS ofCollegeId,
+			u.isEnable AS ofIsEnable,
+			college.schoolName AS createSchoolName,
+			college.collegeName AS createCollegeName,
+			uc.schoolName AS ofSchoolName,
+			uc.collegeName AS ofCollegeName
+		FROM
+			orders
+		LEFT JOIN `server` ON orders.serverId = `server`.id
+		LEFT JOIN `user` ON `user`.id = orders.createId
+		LEFT JOIN `user` AS u ON u.id = orders.uId
+		LEFT JOIN college ON college.id = `user`.collegeId
+		LEFT JOIN college AS uc ON uc.id = u.collegeId
+		<where>
+			<include refid="Orders_Clause"/>
+		</where>
+		ORDER BY
+			orders.updateTime DESC
+	</select>
+	<update id="updateOrders" parameterType="orders">
+		UPDATE orders 
+		<set>
+	      <if test="state != null">
+	        orders.state = #{state,jdbcType=INTEGER},
+	      </if>
+	      <if test="exchangePoint != null">
+	        orders.exchangePoint = #{exchangePoint,jdbcType=INTEGER},
+	      </if>
+	      <if test="reMsg != null">
+	        orders.reMsg = #{reMsg,jdbcType=VARCHAR},
+	      </if>
+	      <if test="isEnable != null">
+	        orders.isEnable = #{isEnable,jdbcType=INTEGER},
+	      </if>
+	    </set>
+		WHERE orders.id = #{id}
+	</update>
+</mapper>

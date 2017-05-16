@@ -17,7 +17,23 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />
     </context:component-scan>
-	<mvc:annotation-driven />
+	<!-- 日期转换器 -->
+	<!-- 第三步：注册处理器映射器/处理器适配器 ，添加conversion-service属性-->
+    <mvc:annotation-driven conversion-service="conversionService"/>
+   
+    <!-- 第二步： 创建convertion-Service ，并注入dateConvert-->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <ref bean="dateConvert"/>
+            </set>
+        </property>
+    </bean>
+    <!-- 第一步:  创建自定义日期转换规则 -->   
+    <bean id="dateConvert" class="com.zjlloveo0.util.DateConvert"/>
+	<!-- 日期转换器 -->
+	
+	<!-- <mvc:resources location="/static/" mapping="/static/**"/> -->
 	<!-- 避免IE在ajax请求时，返回json出现下载 -->
 	<bean id="jacksonMessageConverter"
 		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">

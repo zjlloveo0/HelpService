@@ -6,5 +6,6 @@ import com.zjlloveo0.model.User;
 
 public interface UserService {
 	String registertUser(User user);
+	String updateUser(User user);
 	List<User> findUser(User user);
 }

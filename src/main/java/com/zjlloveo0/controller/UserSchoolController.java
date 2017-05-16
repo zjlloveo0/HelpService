@@ -42,4 +42,14 @@ public class UserSchoolController {
     		return new Msg(107,SYSVALUE.MESSAGE.get("E_LOGIN_EXCEPTION")).toString();
     	}
     }
+    @ResponseBody
+    @RequestMapping(value="findUserSchool",produces = "text/plain;charset=utf-8")
+    public String findUserSchool(User user){
+    	List<UserSchool> res=userSchoolService.findUserSchool(user);
+    	if(res.size()>0){
+    		return new Msg(400,res.toString()).toString();
+    	}else{
+    		return new Msg(401,SYSVALUE.MESSAGE.get("T_FAIL")).toString();
+    	}
+    }
 }

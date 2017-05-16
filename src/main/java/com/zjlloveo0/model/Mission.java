@@ -2,7 +2,9 @@ package com.zjlloveo0.model;
 
 import java.util.Date;
 
-public class Mission {
+import com.zjlloveo0.util.JsonTools;
+
+public class Mission{
 	private Integer id;
 	private Integer createrId;
 	private Integer receiverId;
@@ -13,7 +15,14 @@ public class Mission {
 	private String img;
 	private Integer exchangePoint;
 	private Integer isEnable;
+	private Integer state;
 	private Date updateTime;
+	public Integer getState() {
+		return state;
+	}
+	public void setState(Integer state) {
+		this.state = state;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -83,11 +92,12 @@ public class Mission {
 	@Override
 	public String toString() {
 		return "{\"id\":" + id + ",\"createrId\":" + createrId
+				+",\"state\":"+state
 				+ ",\"receiverId\":" + receiverId + ",\"createTime\":\""
-				+ createTime + "\",\"finishTime\":\"" + finishTime
+				+ JsonTools.formatDate(createTime) + "\",\"finishTime\":\"" + JsonTools.formatDate(finishTime)
 				+ "\",\"title\":\"" + title + "\",\"content\":\"" + content
 				+ "\",\"img\":\"" + img + "\",\"exchangePoint\":"
 				+ exchangePoint + ",\"isEnable\":" + isEnable + ",\"updateTime\":\""
-				+ updateTime + "\"}";
+				+ JsonTools.formatDate(updateTime) + "\"}";
 	}
 }

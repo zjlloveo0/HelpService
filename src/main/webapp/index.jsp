@@ -18,5 +18,6 @@
 		isEnable<input type="text" name="isEnable"><br> 
 		<input type="submit" value="确认">
 	</form>
+	<img src="/HelpService/static/errorpage/img/11.jpg">
 </body>
 </html>

@@ -2,13 +2,14 @@ package com.zjlloveo0.model;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import com.zjlloveo0.util.JsonTools;
 /**
  * 服务
  * @author zjlloveo0
  *
  */
-public class Server implements Serializable{
-	private static final long serialVersionUID = -534655350232993010L;
+public class Server{
 	private Integer id;
 	private Integer createrId;
 	private Date createTime;
@@ -76,10 +77,10 @@ public class Server implements Serializable{
 	@Override
 	public String toString() {
 		return "{\"id\":" + id + ",\"createrId\":" + createrId
-				+ ",\"createTime\":\"" + createTime + "\",\"title\":\""
+				+ ",\"createTime\":\"" + JsonTools.formatDate(createTime) + "\",\"title\":\""
 				+ title + "\",\"content\":\"" + content + "\",\"img\":\"" + img
 				+ "\",\"exchangePoint\":" + exchangePoint
 				+ ",\"isEnable\":" + isEnable + ",\"updateTime\":\""
-				+ updateTime + "\"}";
+				+ JsonTools.formatDate(updateTime) + "\"}";
 	}
 }

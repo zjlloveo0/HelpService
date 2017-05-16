@@ -4,9 +4,9 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zjlloveo0.dao.MissionUserDAO">
 	<select id="findMissionUser" parameterType="mission" resultType="missionUser">
-			SELECT
+		SELECT
 			mission.*, `user`.`name` AS createrName,
-			`user`.img AS createrImg,
+			`user`.img AS createrImg,`user`.point AS createrPoint,
 			(
 				SELECT
 					u.`name`
@@ -22,7 +22,15 @@
 					`user` u
 				WHERE
 					u.id = mission.receiverId
-			) AS receiverImg
+			) AS receiverImg,
+			(
+				SELECT
+					u.point AS receiverPoint
+				FROM
+					`user` u
+				WHERE
+					u.id = mission.receiverId
+			) AS receiverPoint
 		FROM
 			mission
 		LEFT JOIN `user` ON mission.createrId = `user`.id

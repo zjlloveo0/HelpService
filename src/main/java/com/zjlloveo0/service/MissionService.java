@@ -6,5 +6,6 @@ import com.zjlloveo0.model.Mission;
 
 public interface MissionService {
 	String addMission(Mission mission);
+	String updateMission(Mission mission);
 	List<Mission> findMission(Mission mission);
 }

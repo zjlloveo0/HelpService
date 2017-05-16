@@ -1,9 +1,8 @@
 package com.zjlloveo0.model;
 
-import java.io.Serializable;
+import com.zjlloveo0.util.JsonTools;
 
-public class UserSchool extends User implements Serializable {
-	private static final long serialVersionUID = -6420513713083289753L;
+public class UserSchool extends User{
 	private String schoolName;
 	private String collegeName;
 	private Integer createMissionNum;
@@ -49,7 +48,7 @@ public class UserSchool extends User implements Serializable {
 				+ "\",\"stuNum\":\"" + getStuNum() + "\",\"point\":"
 				+ getPoint() + ",\"collegeId\":" + getCollegeId()
 				+ ",\"star\":" + getStar() + ",\"isEnable\":" + getIsEnable()
-				+ ",\"updateTime\":\"" + getUpdateTime() 
+				+ ",\"updateTime\":\"" + JsonTools.formatDate(getUpdateTime()) 
 				+ "\",\"schoolName\":\"" + schoolName + "\",\"collegeName\":\""
 				+ collegeName + "\",\"createMissionNum\":" + createMissionNum
 				+ ",\"createServerNum\":" + createServerNum + "}";

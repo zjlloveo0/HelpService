@@ -4,10 +4,10 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zjlloveo0.dao.ServerDAO">
 	<sql id="Server_Clause">
-		<if test="id != null and id !=''">
+		<if test="id != null">
 			AND `server`.id=#{id}
 		</if>
-		<if test="createrId != null and createrId !=''">
+		<if test="createrId != null">
 			AND `server`.createrId=#{createrId}
 		</if>
 		<if test="createTime != null and createTime !=''">
@@ -22,10 +22,10 @@
 		<if test="img != null and img !=''">
 			AND `server`.img=#{img}
 		</if>
-		<if test="exchangePoint != null and exchangePoint !=''">
+		<if test="exchangePoint != null">
 			AND `server`.exchangePoint=#{exchangePoint}
 		</if>
-		<if test="isEnable != null and isEnable !=''">
+		<if test="isEnable != null">
 			AND `server`.isEnable=#{isEnable}
 		</if>
 		<if test="updateTime != null and updateTime !=''">

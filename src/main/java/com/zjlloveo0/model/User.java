@@ -1,16 +1,15 @@
 package com.zjlloveo0.model;
 
-import java.io.Serializable;
 import java.util.Date;
+
+import com.zjlloveo0.util.JsonTools;
 
 /**
  * 用户
  * @author zjlloveo0
  *
  */
-public class User implements Serializable{
-
-	private static final long serialVersionUID = -5334056280392634156L;
+public class User{
 	private Integer id;
 	private String name;
 	private String phone;
@@ -98,7 +97,7 @@ public class User implements Serializable{
 				+ img + "\",\"stuNum\":\"" + stuNum + "\",\"point\":" + point
 				+ ",\"collegeId\":" + collegeId + ",\"star\":" + star
 				+ ",\"isEnable\":" + isEnable + ",\"updateTime\":\""
-				+ updateTime + "\"}";
+				+ JsonTools.formatDate(updateTime) + "\"}";
 	}
 	
 }
