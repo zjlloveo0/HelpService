@@ -138,6 +138,7 @@ public class OrdersServiceImpl implements OrdersService {
 		o.setCreateId(orders.getCreateId());
 		o.setServerId(orders.getServerId());
 		o.setUId(orders.getUId());
+		o.setState(0);
 		o.setIsEnable(1);
 		if(findOrdersList(o).size()>0){
 			return new Msg(114,SYSVALUE.MESSAGE.get("E_ORDERS_EXIST")).toString();

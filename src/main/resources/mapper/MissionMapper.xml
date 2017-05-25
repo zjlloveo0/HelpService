@@ -66,6 +66,18 @@
 			<if test="finishTime != null">
 				mission.finishTime = #{finishTime,jdbcType=INTEGER},
 			</if>
+			<if test="title != null">
+	        	mission.title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="content != null">
+	        	mission.content = #{content,jdbcType=VARCHAR},
+			</if>
+			<if test="exchangePoint != null">
+	        	mission.exchangePoint = #{exchangePoint,jdbcType=INTEGER},
+			</if>
+			<if test="img != null">
+	        	mission.img = #{img,jdbcType=VARCHAR},
+			</if>
 		</set>
 		WHERE mission.id = #{id}
 	</update>

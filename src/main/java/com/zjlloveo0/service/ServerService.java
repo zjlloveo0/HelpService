@@ -6,5 +6,6 @@ import com.zjlloveo0.model.Server;
 
 public interface ServerService {
 	String addServer(Server server);
+	String updateServer(Server server);
 	List<Server> findServer(Server server);
 }

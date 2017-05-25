@@ -8,15 +8,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import com.zjlloveo0.dao.MissionUserDAO;
 import com.zjlloveo0.model.Mission;
 import com.zjlloveo0.model.MissionUser;
-import com.zjlloveo0.model.Msg;
-import com.zjlloveo0.service.MissionService;
 import com.zjlloveo0.service.MissionUserService;
-import com.zjlloveo0.util.SYSVALUE;
 @Service
 @Transactional(propagation=Propagation.REQUIRES_NEW,readOnly=false,isolation=Isolation.DEFAULT)
 public class MissionUserServiceImpl implements MissionUserService {

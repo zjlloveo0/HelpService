@@ -38,7 +38,7 @@
 			LAST_INSERT_ID()
 		</selectKey>
 		INSERT INTO
-		server(createrId,createTime,title,content,img,exchangePoint,isEnable)
+		`server`(createrId,createTime,title,content,img,exchangePoint,isEnable)
 		VALUES
 		(#{createrId},#{createTime},#{title},#{content},#{img},#{exchangePoint},#{isEnable})
 	</insert>
@@ -49,5 +49,26 @@
 		</where>
 		order by `server`.createTime desc
 	</select>
+	<update id="updateServer" parameterType="server">
+		UPDATE `server` 
+		<set>
+			<if test="isEnable != null">
+			  	`server`.isEnable = #{isEnable,jdbcType=INTEGER},
+			</if>
+			<if test="title != null">
+	        	`server`.title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="content != null">
+	        	`server`.content = #{content,jdbcType=VARCHAR},
+			</if>
+			<if test="exchangePoint != null">
+	        	`server`.exchangePoint = #{exchangePoint,jdbcType=INTEGER},
+			</if>
+			<if test="img != null">
+	        	`server`.img = #{img,jdbcType=VARCHAR},
+			</if>
+		</set>
+		WHERE `server`.id = #{id}
+	</update>
 
 </mapper>

@@ -6,9 +6,9 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import com.zjlloveo0.dao.UserDAO;
@@ -16,6 +16,7 @@ import com.zjlloveo0.model.Msg;
 import com.zjlloveo0.model.User;
 import com.zjlloveo0.service.UserService;
 import com.zjlloveo0.util.HttpTools;
+import com.zjlloveo0.util.MiPush;
 import com.zjlloveo0.util.SYSVALUE;
  
  
@@ -42,7 +43,7 @@ public class UserServiceImpl implements UserService{
     		}
     		dbResult=userDAO.insertUser(user);
     		if(dbResult==1){
-    			postResult=HttpTools.sendPost(SYSVALUE.URL_CREATEUSER, "accid="+user.getPhone()+"&name="+user.getName()+"&icon="+user.getImg()+"&token="+user.getPassword());
+    			postResult=HttpTools.sendPost(SYSVALUE.URL_CREATEUSER, "accid="+user.getId()+"&name="+user.getName()+"&icon="+user.getImg()+"&token=11111q");
     		}else{
     			throw new RuntimeException();
     		}
@@ -82,7 +83,15 @@ public class UserServiceImpl implements UserService{
 	}
 	@Override
 	public String updateUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		if(userDAO.updateUser(user)==1){
+			try {
+				MiPush.sendMessageToAlias("REFRESH", "", "MINE_DETAIL", user.getId()+"",1,"","");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return new Msg(206,SYSVALUE.MESSAGE.get("S_UPDATE_USER")).toString();
+		}else{			
+			return new Msg(401,SYSVALUE.MESSAGE.get("T_FAIL")).toString();
+		}
 	}
 }

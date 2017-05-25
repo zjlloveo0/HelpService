@@ -15,6 +15,7 @@ public class User{
 	private String phone;
 	private String password;
 	private String img;
+	private String schoolInfo;
 	private String stuNum;
 	private Integer point;
 	private Integer collegeId;
@@ -22,6 +23,12 @@ public class User{
 	private Integer isEnable;
 	private Date updateTime;
 	
+	public String getSchoolInfo() {
+		return schoolInfo;
+	}
+	public void setSchoolInfo(String schoolInfo) {
+		this.schoolInfo = schoolInfo;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -93,7 +100,7 @@ public class User{
 	@Override
 	public String toString() {
 		return "{\"id\":" + id + ",\"name\":\"" + name + "\",\"phone\":\""
-				+ phone + "\",\"password\":\"" + password + "\",\"img\":\""
+				+ phone + "\",\"password\":\"" + password + "\",\"schoolInfo\":\""+schoolInfo+"\",\"img\":\""
 				+ img + "\",\"stuNum\":\"" + stuNum + "\",\"point\":" + point
 				+ ",\"collegeId\":" + collegeId + ",\"star\":" + star
 				+ ",\"isEnable\":" + isEnable + ",\"updateTime\":\""

@@ -10,10 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.zjlloveo0.model.Msg;
 import com.zjlloveo0.model.User;
-import com.zjlloveo0.model.UserSchool;
 import com.zjlloveo0.service.UserSchoolService;
 import com.zjlloveo0.service.UserService;
-import com.zjlloveo0.util.MiPush;
 import com.zjlloveo0.util.SYSVALUE;
  
 @Controller

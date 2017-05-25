@@ -12,6 +12,7 @@ public class SYSVALUE {
 	public final static String MIAPPSECRET="6LY1zxLg+T/dnoDBz8ia9Q=="; 
 	//URL
 	public final static String URL_CREATEUSER="https://api.netease.im/nimserver/user/create.action";
+	public final static String SERVER_PATH="D:/Programs/apache-tomcat-8.0.35/webapps/HelpService/";
 	//正则表达式
 	public final static String REGEX_PHONE="^1(3[0-9]|4[57]|5[0-35-9]|7[0135678]|8[0-9])\\d{8}$";
 	public final static String REGEX_PASSWORD="^(?![\\d]+$)(?![a-zA-Z]+$)(?![^\\da-zA-Z]+$).{6,20}$";
@@ -42,15 +43,20 @@ public class SYSVALUE {
 		MESSAGE.put("E_ORDERS_EXIST", "此服务TA还没帮你完成呢！");//114
 		MESSAGE.put("E_ORDERS_NO_EXIST", "订单不存在！");//115
 		MESSAGE.put("E_MISSION_NO_EXIST", "任务不存在！");//116
+		MESSAGE.put("E_LESS_FIELD", "您填写的信息不完整！");//117
 		MESSAGE.put("S_CREATE_USER", "创建用户成功！");//200
 		MESSAGE.put("S_LOGIN", "登录成功！");//201
 		MESSAGE.put("S_CREATE_SERVER", "服务发布成功！");//202
 		MESSAGE.put("S_CREATE_MISSION", "任务发布成功！");//203
 		MESSAGE.put("S_CREATE_ORDERS", "创建订单成功！系统已通知TA尽快为您服务~");//204
 		MESSAGE.put("S_CREATE_ORDERS_NO_NOTICE", "创建订单成功！快联系TA为您服务吧~");//205
+		MESSAGE.put("S_UPDATE_USER", "用户信息更新成功！");//206
+		MESSAGE.put("S_UPDATE_SERVER", "服务更新成功！");//207
 		MESSAGE.put("T_SUCCESS", "操作成功！");//400
 		MESSAGE.put("T_FAIL", "操作失败！");//401
 		MESSAGE.put("T_STATE_NO_CHANGE", "状态未改变！");//402
 		MESSAGE.put("T_STATE_TO_REFRESH", "更新状态失败，请刷新重试！");//403
+		MESSAGE.put("T_STATE_NOT_MODIFY", "当前状态不能修改！");//404
+		MESSAGE.put("T_EXCEPTION", "系统异常！");//405
 	}
 }

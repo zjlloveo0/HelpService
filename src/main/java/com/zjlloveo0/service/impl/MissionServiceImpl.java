@@ -159,7 +159,7 @@ public class MissionServiceImpl implements MissionService {
 		updateM=missionDAO.updateMission(mission);
 		if(updateM==1){
 			try {
-				MiPush.sendMessageToAlias("任务进度更新", mi.getId()+"", "您的任务\""+mi.getTitle()+"\"进度有更新，点击查看", mi.getCreaterId()+"",0,"","");
+				MiPush.sendMessageToAlias("任务进度更新", mi.getId()+"", "您的任务\""+mi.getTitle()+"\"进度有更新，点击查看", mi.getCreaterId()+"",0,"TARGET","MISSION_ORDERS_DETAIL");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

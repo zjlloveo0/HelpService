@@ -6,5 +6,6 @@ import com.zjlloveo0.model.Server;
 
 public interface ServerDAO {
 	public int insertServer(Server server);
+	public int updateServer(Server server);
 	public List<Server> findServer(Server server);
 }

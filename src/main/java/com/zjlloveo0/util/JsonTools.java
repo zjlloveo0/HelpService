@@ -6,6 +6,8 @@ import java.util.Date;
 
 import org.json.JSONObject;
 
+import com.zjlloveo0.model.Msg;
+
 public class JsonTools {  
     public static String getValue(String json,String Key){
     	
@@ -34,5 +36,8 @@ public class JsonTools {
             e.printStackTrace();
         }
         return null;
+    }
+    public static boolean isNull(String s){
+		return (s==null||"".equals(s));
     }
 } 

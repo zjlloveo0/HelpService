@@ -57,6 +57,9 @@
 	      <if test="name != null">
 	        `user`.name = #{name,jdbcType=VARCHAR},
 	      </if>
+	      <if test="schoolInfo != null">
+	        `user`.schoolInfo = #{schoolInfo,jdbcType=VARCHAR},
+	      </if>
 	      <if test="phone != null">
 	        `user`.phone = #{phone,jdbcType=VARCHAR},
 	      </if>
