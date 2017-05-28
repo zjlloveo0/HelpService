@@ -24,10 +24,10 @@ public class UserController {
 	
     @RequestMapping(value="index",produces = "text/plain;charset=utf-8")
     public ModelAndView index(User user){
-    	user=userService.findUser(user).get(0);
+    	List <User> uList=userService.findUser(user);
         ModelAndView mav=new ModelAndView();
-        mav.setViewName("index");
-        mav.addObject("user",user);
+        mav.setViewName("adminuser");
+        mav.addObject("uList",uList);
         return mav;
     }
 //    @ResponseBody

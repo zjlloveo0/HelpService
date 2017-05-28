@@ -71,7 +71,7 @@
      </servlet-mapping>
 
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>/WEB-INF/views/admin/index.html</welcome-file>
 	</welcome-file-list>
 
 	<!-- 错误跳转页面 -->

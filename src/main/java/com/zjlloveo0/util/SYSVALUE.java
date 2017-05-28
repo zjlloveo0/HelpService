@@ -13,6 +13,7 @@ public class SYSVALUE {
 	//URL
 	public final static String URL_CREATEUSER="https://api.netease.im/nimserver/user/create.action";
 	public final static String SERVER_PATH="D:/Programs/apache-tomcat-8.0.35/webapps/HelpService/";
+//	public final static String SERVER_PATH="C:/apache-tomcat-8.0.35/webapps/HelpService/";
 	//正则表达式
 	public final static String REGEX_PHONE="^1(3[0-9]|4[57]|5[0-35-9]|7[0135678]|8[0-9])\\d{8}$";
 	public final static String REGEX_PASSWORD="^(?![\\d]+$)(?![a-zA-Z]+$)(?![^\\da-zA-Z]+$).{6,20}$";
